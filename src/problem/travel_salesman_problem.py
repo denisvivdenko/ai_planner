@@ -53,7 +53,7 @@ class TravelSalesmanProblem(Problem):
             raise Exception(f"Max moves constraint violation. {self.moves_counter} > {self.max_moves}.")
     
     def _read_data(self, file_path: str) -> dict[tuple, float]:
-        data = pd.read_csv(file_path).sample(5000, random_state=42)
+        data = pd.read_csv(file_path).sample(35000, random_state=42)
         graph = {}
         for _, row in data.iterrows():
             graph[(row["county1"], row["county2"])] = row["mi_to_county"]
