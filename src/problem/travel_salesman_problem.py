@@ -18,6 +18,9 @@ class TravelSalesmanProblem(Problem):
 
         self.actions.extend([self.move])
         self.constraints.extend([self.check_distance_constraint, self.check_moves_constrains])
+        for nodes in self.graph.keys():
+            self.parameters.extend(nodes)
+        self.parameters = list(set(self.parameters))
 
     def has_achived_goal(self) -> bool:
         for check_constraint in self.constraints:
