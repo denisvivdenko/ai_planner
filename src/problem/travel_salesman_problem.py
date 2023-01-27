@@ -6,6 +6,7 @@ from src.problem.problem import Problem
 class TravelSalesmanProblem(Problem):
     def __init__(self, start_position: str, goal_position: str, max_distance: float, max_moves: int, data_file_path: str = "data/data.csv") -> None:
         super().__init__()
+        self.start_position = start_position
         self.position = start_position
         self.goal_position = goal_position
         self.distance_counter = 0
@@ -21,6 +22,11 @@ class TravelSalesmanProblem(Problem):
         for nodes in self.graph.keys():
             self.parameters.extend(nodes)
         self.parameters = list(set(self.parameters))
+
+    def reset(self) -> None:
+        self.position = self.start_position
+        self.distance_counter = 0
+        self.moves_counter = 0
 
     def has_achived_goal(self) -> bool:
         for check_constraint in self.constraints:
