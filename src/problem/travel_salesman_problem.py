@@ -4,7 +4,7 @@ from src.problem.problem import Problem
 
 
 class TravelSalesmanProblem(Problem):
-    def __init__(self, start_position: str, goal_position: str, max_distance: float, max_moves: int, data_file_path: str = "data/data.csv") -> None:
+    def __init__(self, start_position: str, goal_position: str, max_distance: float, max_moves: int, data_file_path: str = "data/cities_processed.csv") -> None:
         super().__init__()
         self.start_position = start_position
         self.position = start_position
@@ -60,5 +60,5 @@ class TravelSalesmanProblem(Problem):
         data = pd.read_csv(file_path) #.sample(35000, random_state=42)
         graph = {}
         for _, row in data.iterrows():
-            graph[(row["county1"], row["county2"])] = row["mi_to_county"]
+            graph[(row["city_1"], row["city_2"])] = row["dist"]
         return graph
